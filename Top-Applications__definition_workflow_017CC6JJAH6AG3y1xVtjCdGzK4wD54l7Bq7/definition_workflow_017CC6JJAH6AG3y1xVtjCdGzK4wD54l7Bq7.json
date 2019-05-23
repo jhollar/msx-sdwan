@@ -1,0 +1,114 @@
+{
+  "workflow": {
+    "unique_name": "definition_workflow_017CC6JJAH6AG3y1xVtjCdGzK4wD54l7Bq7",
+    "name": "Top Applications",
+    "title": "Top Applications",
+    "type": "generic.workflow",
+    "base_type": "workflow",
+    "variables": [
+      {
+        "schema_id": "datatype.integer",
+        "properties": {
+          "value": 10,
+          "scope": "input",
+          "name": "limit",
+          "type": "datatype.integer"
+        },
+        "unique_name": "variable_workflow_017CC7BMW7XW41kXAxomwwk5zfovAe8G9o8",
+        "object_type": "variable_workflow"
+      }
+    ],
+    "properties": {
+      "atomic": {
+        "is_atomic": false
+      },
+      "delete_workflow_instance": false,
+      "description": "Application Name and Octets usage for each application",
+      "display_name": "Top Applications",
+      "favorite": false,
+      "target": {
+        "target_type": "web-service.endpoint",
+        "target_id": "definition_target_017CA3X341BUK4MiJh9dWb4G4me2t4Jnisn",
+        "execute_on_workflow_target": true
+      }
+    },
+    "object_type": "definition_workflow",
+    "actions": [
+      {
+        "unique_name": "definition_activity_017CC7F9YIPH8446QU1na8QXzcZtckHVWZk",
+        "name": "HTTP Request",
+        "title": "Get Information",
+        "type": "web-service.http_request",
+        "base_type": "activity",
+        "properties": {
+          "accept": "application/json",
+          "action_timeout": 180,
+          "allow_auto_redirect": true,
+          "content_type": "application/json",
+          "continue_on_error_status_code": false,
+          "continue_on_failure": false,
+          "display_name": "Get Information",
+          "method": "GET",
+          "relative_url": "/dataservice/statistics/dpi/applications/summary?limit=$workflow.definition_workflow_017CC6JJAH6AG3y1xVtjCdGzK4wD54l7Bq7.input.variable_workflow_017CC7BMW7XW41kXAxomwwk5zfovAe8G9o8$\u0026query=%7B%22query%22%3A%7B%22condition%22%3A%22AND%22%2C%22rules%22%3A%5B%7B%22value%22%3A%5B%2212%22%5D%2C%22field%22%3A%22entry_time%22%2C%22type%22%3A%22date%22%2C%22operator%22%3A%22last_n_hours%22%7D%5D%7D%7D",
+          "runtime_user": {
+            "override_target_runtime_user": false,
+            "target_default": true
+          },
+          "target": {
+            "override_workflow_target": false,
+            "use_workflow_target": true
+          }
+        },
+        "object_type": "definition_activity"
+      }
+    ],
+    "categories": [
+      "category_017CC0B9MWUA41Z7oHJYdApVGpEURJVKS2y"
+    ]
+  },
+  "categories": {
+    "category_017CC0B9MWUA41Z7oHJYdApVGpEURJVKS2y": {
+      "unique_name": "category_017CC0B9MWUA41Z7oHJYdApVGpEURJVKS2y",
+      "name": "SDWAN Device Metrics",
+      "title": "SDWAN Device Metrics",
+      "type": "basic.category",
+      "base_type": "category",
+      "description": "Category for all device metrics workflows",
+      "category_type": "custom",
+      "object_type": "category"
+    }
+  },
+  "targets": {
+    "definition_target_017CA3X341BUK4MiJh9dWb4G4me2t4Jnisn": {
+      "unique_name": "definition_target_017CA3X341BUK4MiJh9dWb4G4me2t4Jnisn",
+      "name": "Cisco-vManage",
+      "title": "Cisco-vManage",
+      "type": "web-service.endpoint",
+      "base_type": "target",
+      "object_type": "definition_target",
+      "properties": {
+        "default_runtime_user_id": "definition_runtime_user_017CA3J2DQVEC53MYlnbhOyOU8M6bsyQC6U",
+        "description": "A target used to obtain information from a Viptela Control Plane",
+        "disable_certificate_validation": true,
+        "display_name": "Cisco-vManage",
+        "host": "18.209.197.226",
+        "no_runtime_user": false,
+        "protocol": "https"
+      }
+    }
+  },
+  "runtime_users": {
+    "definition_runtime_user_017CA3J2DQVEC53MYlnbhOyOU8M6bsyQC6U": {
+      "unique_name": "definition_runtime_user_017CA3J2DQVEC53MYlnbhOyOU8M6bsyQC6U",
+      "name": "awsreguser",
+      "title": "awsreguser",
+      "type": "runtime_user.web-service_basic_credentials",
+      "base_type": "runtime_user",
+      "object_type": "definition_runtime_user",
+      "properties": {
+        "description": "Control Plane user",
+        "display_name": "awsreguser"
+      }
+    }
+  }
+}
