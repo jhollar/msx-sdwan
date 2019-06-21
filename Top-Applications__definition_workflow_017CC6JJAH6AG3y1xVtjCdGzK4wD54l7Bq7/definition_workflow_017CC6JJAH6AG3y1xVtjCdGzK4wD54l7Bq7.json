@@ -23,7 +23,7 @@
         "is_atomic": false
       },
       "delete_workflow_instance": false,
-      "description": "Application Name and Octets usage for each application",
+      "description": "Application Name and Octets usage for each application.",
       "display_name": "Top Applications",
       "favorite": false,
       "target": {
@@ -76,6 +76,42 @@
       "description": "Category for all device metrics workflows",
       "category_type": "custom",
       "object_type": "category"
+    }
+  },
+  "triggers": {
+    "triggerschedule_0182L7ETBOL3174qMHvMvC1tTrc5fQWudGv": {
+      "workflow_id": "definition_workflow_017CC6JJAH6AG3y1xVtjCdGzK4wD54l7Bq7",
+      "name": "sdwan-viptela-trigger",
+      "title": "",
+      "lowercase_name": "schedule.sdwan-viptela-trigger",
+      "type": "schedule",
+      "base_type": "trigger",
+      "ref_id": "schedule_0182L4AP8ZAPV6mCWiAvzzbNQkV2d0P8UWy",
+      "version": "1.0.0",
+      "disabled": false,
+      "unique_name": "triggerschedule_0182L7ETBOL3174qMHvMvC1tTrc5fQWudGv",
+      "object_type": "triggerschedule"
+    }
+  },
+  "schedules": {
+    "schedule_0182L4AP8ZAPV6mCWiAvzzbNQkV2d0P8UWy": {
+      "unique_name": "schedule_0182L4AP8ZAPV6mCWiAvzzbNQkV2d0P8UWy",
+      "name": "sdwan-viptela-hourly",
+      "description": "A Trigger to run every hour",
+      "type": "basic.schedule",
+      "base_type": "schedule",
+      "properties": {
+        "calendar": "calendar_recurring_1BMfMWvgiDhSjBQ7hTSyvz3NyVZ",
+        "timezone": "US/Pacific",
+        "starttime": "00:00",
+        "interval_hours": 0,
+        "interval_minutes": 5,
+        "number_of_times": 2,
+        "display_name": "sdwan-viptela-hourly",
+        "description": "A Trigger to run every hour"
+      },
+      "version": "1.0.0",
+      "object_type": "schedule"
     }
   },
   "targets": {
