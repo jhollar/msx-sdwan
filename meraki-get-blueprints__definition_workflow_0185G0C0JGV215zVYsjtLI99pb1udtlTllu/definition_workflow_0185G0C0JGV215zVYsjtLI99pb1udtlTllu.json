@@ -1,0 +1,182 @@
+{
+  "workflow": {
+    "unique_name": "definition_workflow_0185G0C0JGV215zVYsjtLI99pb1udtlTllu",
+    "name": "Get Blueprints",
+    "title": "Get Blueprints",
+    "type": "generic.workflow",
+    "base_type": "workflow",
+    "variables": [
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "boboperator",
+          "scope": "input",
+          "name": "username",
+          "type": "datatype.string"
+        },
+        "unique_name": "variable_workflow_0185G12OXKIO15wqGVzG8xs14GiqMEvKH1n",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.secure_string",
+        "properties": {
+          "scope": "input",
+          "name": "password",
+          "type": "datatype.secure_string"
+        },
+        "unique_name": "variable_workflow_0185G1E3KO3KX0zMOjdPGnzWLZ0iBM2hd9m",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "534238",
+          "scope": "input",
+          "name": "meraki-organization",
+          "type": "datatype.string"
+        },
+        "unique_name": "variable_workflow_0185G1S6YJGK20NrGZJ2MiheeZ2CpkHs0N8",
+        "object_type": "variable_workflow"
+      }
+    ],
+    "properties": {
+      "atomic": {
+        "is_atomic": false
+      },
+      "delete_workflow_instance": false,
+      "description": "Get blueprints for a specific organization ",
+      "display_name": "Get Blueprints",
+      "favorite": false,
+      "target": {
+        "target_type": "web-service.endpoint",
+        "target_id": "definition_target_0178TE9AL7OBO5JvAXHOt96WiAyhpuezDFs",
+        "execute_on_workflow_target": true
+      }
+    },
+    "object_type": "definition_workflow",
+    "actions": [
+      {
+        "unique_name": "definition_activity_0185G1XD8EZZK5Z6wM8HmRJ01fvHqRSgrIY",
+        "name": "msx.poc.demo.authentication",
+        "title": "msx.poc.demo.authentication",
+        "type": "workflow.atomic_workflow",
+        "base_type": "subworkflow",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "msx.poc.demo.authentication",
+          "input": {
+            "variable_workflow_0178PZB6JS4N80rNA6xBJtPQSn7hyIIcK1m": "$workflow.definition_workflow_0185G0C0JGV215zVYsjtLI99pb1udtlTllu.input.variable_workflow_0185G12OXKIO15wqGVzG8xs14GiqMEvKH1n$",
+            "variable_workflow_0178RB3MGIGFG2afkUfmMN2tYq8eIJSGhh3": "$workflow.definition_workflow_0185G0C0JGV215zVYsjtLI99pb1udtlTllu.input.variable_workflow_0185G1E3KO3KX0zMOjdPGnzWLZ0iBM2hd9m$"
+          },
+          "target": {
+            "execute_on_this_target_group": true,
+            "target_group_id": "target_group_0178Q0UEXDA2G6dtnxzP5G2CfyM0T8k3Jzz"
+          },
+          "workflow_id": "definition_workflow_0178PYNKJCL5K24RI6VDP6v1KmEqpPGMROf"
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_0185G2CBNJY4Q5lQJ5D3x3uEtypgRRZ2btg",
+        "name": "HTTP Request",
+        "title": "Get Blueprints",
+        "type": "web-service.http_request",
+        "base_type": "activity",
+        "properties": {
+          "accept": "application/json",
+          "action_timeout": 180,
+          "allow_auto_redirect": true,
+          "content_type": "application/json",
+          "continue_on_error_status_code": false,
+          "continue_on_failure": false,
+          "custom_headers": [
+            {
+              "name": "Authorization",
+              "value": "Bearer $activity.definition_activity_0185G1XD8EZZK5Z6wM8HmRJ01fvHqRSgrIY.output.variable_workflow_0178RBBBM3GKS4dYeZMj41wwBlwjtS5E6EU$"
+            }
+          ],
+          "display_name": "Get Blueprints",
+          "method": "GET",
+          "relative_url": "/v1/organization/$workflow.definition_workflow_0185G0C0JGV215zVYsjtLI99pb1udtlTllu.input.variable_workflow_0185G1S6YJGK20NrGZJ2MiheeZ2CpkHs0N8$/configTemplates",
+          "runtime_user": {
+            "override_target_runtime_user": false,
+            "target_default": true
+          },
+          "target": {
+            "override_workflow_target": false,
+            "override_workflow_target_group_criteria": false,
+            "use_workflow_target": true,
+            "use_workflow_target_group": false
+          }
+        },
+        "object_type": "definition_activity"
+      }
+    ],
+    "categories": [
+      "category_0178TC88AKKY85nsgMXtNdrq4Wuye6lSBh7"
+    ]
+  },
+  "categories": {
+    "category_0178TC88AKKY85nsgMXtNdrq4Wuye6lSBh7": {
+      "unique_name": "category_0178TC88AKKY85nsgMXtNdrq4Wuye6lSBh7",
+      "name": "Meraki Operations",
+      "title": "Meraki Operations",
+      "type": "basic.category",
+      "base_type": "category",
+      "description": "Basic set of Meraki Operations which uses the msx-meraki service to extract information using Meraki APIs",
+      "category_type": "custom",
+      "object_type": "category"
+    },
+    "category_01ggXe9oj31C4KkAmubD6uezL1stQpioN": {
+      "unique_name": "category_01ggXe9oj31C4KkAmubD6uezL1stQpioN",
+      "name": "MSX Components",
+      "title": "MSX Components",
+      "type": "basic.category",
+      "base_type": "category",
+      "description": "This category represents MSX components used to create workflows",
+      "category_type": "custom",
+      "object_type": "category"
+    }
+  },
+  "targets": {
+    "definition_target_0178TE9AL7OBO5JvAXHOt96WiAyhpuezDFs": {
+      "unique_name": "definition_target_0178TE9AL7OBO5JvAXHOt96WiAyhpuezDFs",
+      "name": "msx.poc.demo.meraki.target",
+      "title": "msx.poc.demo.meraki.target",
+      "type": "web-service.endpoint",
+      "base_type": "target",
+      "object_type": "definition_target",
+      "properties": {
+        "description": "Target to the Meraki Service running on poc.demo",
+        "disable_certificate_validation": true,
+        "display_name": "msx.poc.demo.meraki.target",
+        "host": "poc.demo.ciscomsx.com",
+        "no_runtime_user": true,
+        "path": "/meraki",
+        "protocol": "https"
+      }
+    }
+  },
+  "target_groups": {
+    "target_group_0178Q0UEXDA2G6dtnxzP5G2CfyM0T8k3Jzz": {
+      "unique_name": "target_group_0178Q0UEXDA2G6dtnxzP5G2CfyM0T8k3Jzz",
+      "name": "msx.poc.demo.tg",
+      "title": "msx.poc.demo.tg",
+      "description": "Target Group for POC.DEMO",
+      "type": "generic.target_group",
+      "base_type": "target_group",
+      "version": "1.0.0",
+      "targets": [
+        {
+          "data_target_type": "web-service.endpoint",
+          "view_target_type": "web-service.endpoint",
+          "include_all_targets": true
+        }
+      ],
+      "object_type": "target_group"
+    }
+  },
+  "atomic_workflows": [
+    "definition_workflow_0178PYNKJCL5K24RI6VDP6v1KmEqpPGMROf"
+  ]
+}
